@@ -6,6 +6,10 @@ const app = express();
 //   res.send('<h1>this is my page</h1>')
 // })
 
+app.get('/', (req, res) => {
+  res.send('<h1>welcome to homepage!!!!</h1>')
+})
+
 app.get('/cats', (req, res) => {
   console.log("cat request!!")
   res.send('<h1>cat page </h1>')
@@ -16,6 +20,11 @@ app.get('/r/:subreddit', (req, res) => {
   res.send(`<h1>Browsing the ${subreddit} page`)
 })
 
+app.get('/r/:subreddit/:postId', (req, res) => {
+  const { subreddit, postId } = req.params;
+  res.send(`<h1>Viewing Post ID : ${postId} in ${subreddit} page`)
+})
+
 app.post('/cats', (req, res) => {
   res.send('post request to /cats!! this is different')
 })
@@ -24,9 +33,6 @@ app.get('/dogs', (req, res) => {
   res.send('<h1>dog page </h1>')
 })
 
-app.get('/', (req, res) => {
-  res.send('<h1>welcome to homepage</h1>')
-})
 
 
 // /cats =>'meow'
