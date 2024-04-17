@@ -11,6 +11,10 @@ app.get('/cats', (req, res) => {
   res.send('<h1>cat page </h1>')
 })
 
+app.get('/r/:subreddit', (req, res) => {
+  const { subreddit } = req.params;
+  res.send(`<h1>Browsing the ${subreddit} page`)
+})
 
 app.post('/cats', (req, res) => {
   res.send('post request to /cats!! this is different')
@@ -29,10 +33,6 @@ app.get('/', (req, res) => {
 // /dogs =>'woof
 // '/'  
 
-app.get('*', (req, res) => {
-  res.send('i dont know that path')
-})
-
 app.listen(3000, () => {
-  res.send(`listening on port 3000!`)
+  console.log(`listening on port 3000!`)
 })
